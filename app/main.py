@@ -9,7 +9,7 @@ app = FastAPI()
 while True:
     try:
         conn = psycopg.connect(
-            dbname="Book Library",
+            dbname="book_library",
             user="postgres",
             password="FrozenLu1827.",
             host="localhost",
@@ -23,3 +23,20 @@ while True:
         print("Error details:", error)
         time.sleep(5)
 
+
+@app.get("/")
+def root():
+    return {"message": "API is working"}
+
+
+@app.get("/members")
+def get_members():
+    try:
+        cursor.execute("SELECT * FROM public.\"Members\";")
+        
+        members = cursor.fetchall()
+        
+        return {"status": "success", "data": members}
+    
+    except Exception as error:
+        return {"status": "error", "message": str(error)}
