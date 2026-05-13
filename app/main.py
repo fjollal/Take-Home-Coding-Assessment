@@ -28,6 +28,13 @@ while True:
 def root():
     return {"message": "API is working"}
 
+@app.get("/api/v1/health")
+def health_check():
+    return {
+        "status": "ok",
+        "library": "open"
+    }
+
 
 @app.get("/members")
 def get_members():
