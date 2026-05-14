@@ -32,7 +32,8 @@ Hapat qe i kom ndjek gjate zgjedhjes se detyres:
 
 16.Tek routers i kom kriju te gjitha files per secilin liber qe e kom kriju edhe me fillu mi kriju endpoints
 
-17.Tek main.py e kom lon health endpoint si dhe i kom imortu te gjitha endpoint tek folderi routerr
+17.Tek main.py e kom lon health endpoint si dhe i kom importu te gjitha endpoints tek folderi router permes app.include_router()
 
+18.Kom fillu me krijimin e endpoints te cilat pi kontrolloj a po funksionojn pastaj po vazhdoj te tjetra.Keto pi boj me radh si tek detyra qysh jane te listuara Health endpoints,CRUDE(GET,POST,PATCH,DELETE),Loan operators,Hardendpoint-filtered,sorted,paginated book search si dhe reports.
 
-15.Kom fillu me krijimin e endpoints te cilat pi kontrolloj a po funksionojn pastaj po vazhdoj te tjetra.Keto pi boj me radh si tek detyra qysh jane te listuara Health endpoints,CRUDE(GET,POST,PATCH,DELETE),Loan operators,Hardendpoint-filtered,sorted,paginated book search si dhe reports.
+19.Nderkohe gjate krijimit te endpoints po shikoj mos ka nevoj per ndonje korigjim sikur ne schema

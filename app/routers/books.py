@@ -114,7 +114,7 @@ def update_books(book_id: int, title: str = None, isbn: str = None):
     
 
 @router.delete("/{id}")
-def delete_member(book_id:int):
+def delete_books(book_id:int):
     try:
         cursor.execute(
             '''

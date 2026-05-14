@@ -112,7 +112,7 @@ def update_category(categories_id: int, name: str = None):
         raise HTTPException(status_code=400, detail=str(error))
 
 @router.delete("/{id}")
-def delete_member(categories_id:int):
+def delete_categories(categories_id:int):
     try:
         cursor.execute(
             '''

@@ -42,8 +42,14 @@ class Books_Authors(BaseModel):
 #Schema per Loans
 class Loans(BaseModel):
     loans_id:int
-    members_id:int
+    member_id:int
     book_id:int
     loan_date:date
     due_date:date
     return_date:Optional[date] = None
+
+
+class LoanCreate(BaseModel):
+    member_id: int
+    book_id: int
+    due_date: date

@@ -115,7 +115,7 @@ def update_author(author_id: int, full_name: str = None, country: str = None):
     
 
 @router.delete("/{id}")
-def delete_member(author_id:int):
+def delete_author(author_id:int):
     try:
         cursor.execute(
             '''
