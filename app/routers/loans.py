@@ -113,3 +113,25 @@ def update_loans(loans_id: int, member_id: int = None, book_id: int = None):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+    
+
+
+@router.delete("/{id}")
+def delete_member(loans_id:int):
+    try:
+        cursor.execute(
+            '''
+            DELETE FROM public."Loans" WHERE loans_id=%s
+            ''',
+            (loans_id,)
+        )
+        conn.commit()
+
+        return {
+            "status": "success",
+            "message": "Loan deleted"
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

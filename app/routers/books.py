@@ -111,3 +111,25 @@ def update_books(book_id: int, title: str = None, isbn: str = None):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+    
+
+@router.delete("/{id}")
+def delete_member(book_id:int):
+    try:
+        cursor.execute(
+            '''
+            DELETE FROM public."Books" WHERE book_id=%s
+            ''',
+            (book_id,)
+        )
+        conn.commit()
+
+        return {
+            "status": "success",
+            "message": "Book deleted"
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))
+

@@ -110,3 +110,23 @@ def update_category(categories_id: int, name: str = None):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+@router.delete("/{id}")
+def delete_member(categories_id:int):
+    try:
+        cursor.execute(
+            '''
+            DELETE FROM public."Categories" WHERE categories_id=%s
+            ''',
+            (categories_id,)
+        )
+        conn.commit()
+
+        return {
+            "status": "success",
+            "message": "Category deleted"
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

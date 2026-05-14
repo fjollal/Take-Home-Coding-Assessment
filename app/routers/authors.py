@@ -112,3 +112,24 @@ def update_author(author_id: int, full_name: str = None, country: str = None):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+    
+
+@router.delete("/{id}")
+def delete_member(author_id:int):
+    try:
+        cursor.execute(
+            '''
+            DELETE FROM public."Authors" WHERE author_id=%s
+            ''',
+            (author_id,)
+        )
+        conn.commit()
+
+        return {
+            "status": "success",
+            "message": "Author deleted"
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

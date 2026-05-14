@@ -113,3 +113,24 @@ def update_member(id: int, full_name: str = None, email: str = None):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+
+@router.delete("/{id}")
+def delete_member(id:int):
+    try:
+        cursor.execute(
+            '''
+            DELETE FROM public."Members" WHERE id=%s
+            ''',
+            (id,)
+        )
+        conn.commit()
+
+        return {
+            "status": "success",
+            "message": "Member deleted"
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))
