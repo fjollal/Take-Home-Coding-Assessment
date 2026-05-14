@@ -64,3 +64,51 @@ def create_author(full_name:str,country:str,author_id:int):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+    
+@router.patch("/{author_id}")
+def update_author(author_id: int, full_name: str = None, country: str = None):
+
+    try:
+        fields = []
+        values = []
+
+        if full_name is not None:
+            fields.append("full_name = %s")
+            values.append(full_name)
+
+        if country is not None:
+            fields.append("country = %s")
+            values.append(country)
+
+        if not fields:
+            return {
+                "status": "error",
+                "message": "No fields provided for update"
+            }
+
+        values.append(author_id)
+
+        query = f"""
+            UPDATE public."Authors"
+            SET {", ".join(fields)}
+            WHERE author_id = %s
+            RETURNING *
+        """
+
+        cursor.execute(query, values)
+        conn.commit()
+
+        updated = cursor.fetchone()
+
+        if not updated:
+            raise HTTPException(status_code=404, detail="Author not found")
+
+        return {
+            "status": "success",
+            "data": updated
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

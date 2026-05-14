@@ -65,3 +65,51 @@ def create_member(id:int,full_name: str, email: str, join_date: date, is_active:
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+    
+
+@router.patch("/{id}")
+def update_member(id: int, full_name: str = None, email: str = None):
+
+    try:
+        fields = []
+        values = []
+
+        if full_name is not None:
+            fields.append("full_name = %s")
+            values.append(full_name)
+
+        if email is not None:
+            fields.append("email = %s")
+            values.append(email)
+
+        if not fields:
+            return {
+                "status": "error",
+                "message": "No fields provided for update"
+            }
+
+        values.append(id)
+
+        query = f"""
+            UPDATE public."Members"
+            SET {", ".join(fields)}
+            WHERE id = %s
+            RETURNING *
+        """
+
+        cursor.execute(query, values)
+        conn.commit()
+
+        updated = cursor.fetchone()
+
+        if not updated:
+            raise HTTPException(status_code=404, detail="Member not found")
+
+        return {
+            "status": "success",
+            "data": updated
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

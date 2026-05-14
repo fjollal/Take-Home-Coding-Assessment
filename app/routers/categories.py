@@ -65,3 +65,48 @@ def create_category(name:str,categories_id:int):
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+
+@router.patch("/{categories_id}")
+def update_category(categories_id: int, name: str = None):
+
+    try:
+        fields = []
+        values = []
+
+        if name is not None:
+            fields.append("name = %s")
+            values.append(name)
+
+
+        if not fields:
+            return {
+                "status": "error",
+                "message": "No fields provided for update"
+            }
+
+        values.append(categories_id)
+
+        query = f"""
+            UPDATE public."Categories"
+            SET {", ".join(fields)}
+            WHERE categories_id = %s
+            RETURNING *
+        """
+
+        cursor.execute(query, values)
+        conn.commit()
+
+        updated = cursor.fetchone()
+
+        if not updated:
+            raise HTTPException(status_code=404, detail="Categories not found")
+
+        return {
+            "status": "success",
+            "data": updated
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

@@ -64,3 +64,52 @@ def create_loans(loans_id:int,member_id:int,book_id:int,loan_date:int,due_date:i
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+
+
+@router.patch("/{loans_id}")
+def update_loans(loans_id: int, member_id: int = None, book_id: int = None):
+
+    try:
+        fields = []
+        values = []
+
+        if member_id is not None:
+            fields.append("member_id = %s")
+            values.append(member_id)
+
+        if book_id is not None:
+            fields.append("book_id = %s")
+            values.append(book_id)
+
+        if not fields:
+            return {
+                "status": "error",
+                "message": "No fields provided for update"
+            }
+
+        values.append(loans_id)
+
+        query = f"""
+            UPDATE public."Loans"
+            SET {", ".join(fields)}
+            WHERE loans_id = %s
+            RETURNING *
+        """
+
+        cursor.execute(query, values)
+        conn.commit()
+
+        updated = cursor.fetchone()
+
+        if not updated:
+            raise HTTPException(status_code=404, detail="Loans not found")
+
+        return {
+            "status": "success",
+            "data": updated
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))

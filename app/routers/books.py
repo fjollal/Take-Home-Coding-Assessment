@@ -63,3 +63,51 @@ def create_books(book_id:int,title:str,isbn:str,total_copies:int,published_year:
     except Exception as error:
         conn.rollback()
         raise HTTPException(status_code=400, detail=str(error))
+
+
+@router.patch("/{book_id}")
+def update_books(book_id: int, title: str = None, isbn: str = None):
+
+    try:
+        fields = []
+        values = []
+
+        if title is not None:
+            fields.append("title = %s")
+            values.append(title)
+
+        if isbn is not None:
+            fields.append("isbn = %s")
+            values.append(isbn)
+
+        if not fields:
+            return {
+                "status": "error",
+                "message": "No fields provided for update"
+            }
+
+        values.append(book_id)
+
+        query = f"""
+            UPDATE public."Books"
+            SET {", ".join(fields)}
+            WHERE book_id = %s
+            RETURNING *
+        """
+
+        cursor.execute(query, values)
+        conn.commit()
+
+        updated = cursor.fetchone()
+
+        if not updated:
+            raise HTTPException(status_code=404, detail="Book not found")
+
+        return {
+            "status": "success",
+            "data": updated
+        }
+
+    except Exception as error:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(error))
