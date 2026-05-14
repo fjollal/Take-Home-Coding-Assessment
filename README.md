@@ -31,6 +31,7 @@ Instalimi dhe konfigurimi:
 
 
 Routers endpoints:
+http://localhost:8000/docs
 1.Members.py CRUD(GET,POST,PUT,DELETE)
 2.Authors.py CRUD(GET,POST,PUT,DELETE)
 3.Categories.py CRUD(GET,POST,PUT,DELETE)  

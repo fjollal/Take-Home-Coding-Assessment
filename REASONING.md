@@ -10,30 +10,35 @@ Hapat qe i kom ndjek gjate zgjedhjes se detyres:
 
 5.E kom instalu edhe postman por prape e kom perdor uvicorn app.main:app --reload (ma praktik mu ka dok)
 
-6.E kom instalu Postgre SQL eshte hera e pare qe e kom perdore edhe kjo u kon arsyeja pse mka shty me zgjedh detyren me Postgre SQL qe me msu diqka te re.U kon e lehte mu perdore por hera e pare pak ma veshtire derisa i msova qysh perdoret
+6.E kom instalu Postgre SQL eshte hera e pare qe e kom perdore edhe kjo u kon arsyeja pse mka shty me zgjedh detyren me Postgre SQL qe me msu diqka te re.U kon e lehte mu perdore por hera e pare pak ma veshtire derisa i msova qysh perdoret.
 
-7.Ne visual i kom kriju krejt files dhe folders qe jon kon te kerkume ne detyre
+7.Krijimi i tabelave u kon i lehte (tek tabelat members,authors edhe categories)e ke shkrujt emrin e kolones pastaj data type e ke zgjedh edhe e ki specifiku Not NULL ose NULL(varesisht nga kerkesa) po ashtu edhe per primary key veq ke mujt me selektu. Kur ka vazhdu tek tabelat tjera(books,books_author,loans) qe kane pas foreign keys ka qen pak ma e veshtire derisa e kom pa te constraints mi shkrujt foreign keys me lidh me tabelen paraprake(ne kete rast books foriegn key e ka pas nga tabela categories,books_author i ka pas dy foreign_key qe ka qen hera e pare qe kom kriju nje tabel me composite PK si dhe tek loans jon perfshi keto dy foreign keys) po ashtu te pjesa e constraints u kon edhe pjesa qe u specifiku kur nje kolone u kon unique.
 
-8.E kom instalu Psycopg 3 i cili ka qen verzioni me i ri edhe kjo ma ka mundesu lidhjen ne mes te Python edhe Postgre SQL 
+8.Ne visual i kom kriju krejt files dhe folders qe jon kon te kerkume ne detyre
 
-9.I kom kriju tabelat ne fillim te gjitha mandej kom vazhdu mi insertu te dhenat (4 tabela i kom insertu me te dhena ne databaze ndersa 2 tabela i kom insertu tek file seed.py).Dhe per tabela te dhenat qe i kom insertu i kom gjeneru me gemini
+9.E kom instalu Psycopg 3 i cili ka qen verzioni me i ri edhe kjo ma ka mundesu lidhjen ne mes te Python edhe Postgre SQL 
 
-10.Ne fillim databazes ja kom lon emrin Book Library po nderkohe mka dal problem gjate lidhjes per ate arsye e kom ndrru emrin e databazes ne book_library ,po ashtu edhe emrat e tabelave i kom bo me shkronje te madhe per ate arsye "" u dasht mi perdore tek seed.py
+10.I kom kriju tabelat ne fillim te gjitha mandej kom vazhdu mi insertu te dhenat (4 tabela i kom insertu me te dhena ne databaze ndersa 2 tabela i kom insertu tek file seed.py).Dhe per tabela te dhenat qe i kom insertu i kom gjeneru me gemini
 
-11.E kom instalu alembic ne terminal e cila eshte nje database migration tool (ketu kom marr ndihme nga copilot per me instalu sepse ne terminal mdilshin disa errora qe vete smujsha mi zgjedh)
+11.Ne fillim databazes ja kom lon emrin Book Library po nderkohe mka dal problem gjate lidhjes per ate arsye e kom ndrru emrin e databazes ne book_library ,po ashtu edhe emrat e tabelave i kom bo me shkronje te madhe per ate arsye "" u dasht mi perdore tek seed.py
 
-12.Tek main.py e kom importu FastApi e kom lidh me databaze edhe e kom kqyr a po muna mi marr te dhenat qe i kom insertu atje edhe databaza u lidh me sukses .
+12.E kom instalu alembic ne terminal e cila eshte nje database migration tool (ketu kom marr ndihme nga copilot per me instalu sepse ne terminal mdilshin disa errora qe vete smujsha mi zgjedh)
 
-13.Kom vazhdu duke kriju schemas ne kete rast klasa me secilen tabel
+13.Tek main.py e kom importu FastApi e kom lidh me databaze edhe e kom kqyr a po muna mi marr te dhenat qe i kom insertu atje edhe databaza u lidh me sukses .
 
-14.Tek model.py kom kriju tabelat SQLAlchemy me te gjitha detajet qe i kom perfshi ne databaze
+14.Kom vazhdu duke kriju schemas ne kete rast klasa me secilen tabel
 
-15.Ne fillim ne main.py e kom bo lidhjen me databaze pas analizimit te videos lidhjen me databaze e kom bo tek database.py ndersa tek main.py e kom lon vetem lidhjen me fastapi
+15.Tek model.py kom kriju tabelat SQLAlchemy me te gjitha detajet qe i kom perfshi ne databaze
 
-16.Tek routers i kom kriju te gjitha files per secilin liber qe e kom kriju edhe me fillu mi kriju endpoints
+16.Ne fillim ne main.py e kom bo lidhjen me databaze pas analizimit te videos lidhjen me databaze e kom bo tek database.py ndersa tek main.py e kom lon vetem lidhjen me fastapi
 
-17.Tek main.py e kom lon health endpoint si dhe i kom importu te gjitha endpoints tek folderi router permes app.include_router()
+17.Tek routers i kom kriju te gjitha files per secilin liber qe e kom kriju edhe me fillu mi kriju endpoints
 
-18.Kom fillu me krijimin e endpoints te cilat pi kontrolloj a po funksionojn pastaj po vazhdoj te tjetra.Keto pi boj me radh si tek detyra qysh jane te listuara Health endpoints,CRUDE(GET,POST,PATCH,DELETE),Loan operators,Hardendpoint-filtered,sorted,paginated book search si dhe reports.
+18.Tek main.py e kom lon health endpoint si dhe i kom importu te gjitha endpoints tek folderi router permes app.include_router()
 
-19.Nderkohe gjate krijimit te endpoints po shikoj mos ka nevoj per ndonje korigjim sikur ne schema
+19.Kom fillu me krijimin e endpoints te cilat pi kontrolloj a po funksionojn pastaj po vazhdoj te tjetra.Keto pi boj me radh si tek detyra qysh jane te listuara Health endpoints,CRUDE(GET,POST,PATCH,DELETE),Loan operators,Hardendpoint-filtered,sorted,paginated book search si dhe reports.
+
+20.Nderkohe gjate krijimit te endpoints po shikoj mos ka nevoj per ndonje korigjim sikur ne schema
+
+21.Why DELETE on a member with active loans returns 409
+Sepse nuk duhet me fshi nje member i cili ka met akoma pa e kthy librin
