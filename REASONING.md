@@ -28,4 +28,11 @@ Hapat qe i kom ndjek gjate zgjedhjes se detyres:
 
 14.Tek model.py kom kriju tabelat SQLAlchemy me te gjitha detajet qe i kom perfshi ne databaze
 
+15.Ne fillim ne main.py e kom bo lidhjen me databaze pas analizimit te videos lidhjen me databaze e kom bo tek database.py ndersa tek main.py e kom lon vetem lidhjen me fastapi
+
+16.Tek routers i kom kriju te gjitha files per secilin liber qe e kom kriju edhe me fillu mi kriju endpoints
+
+17.Tek main.py e kom lon health endpoint si dhe i kom imortu te gjitha endpoint tek folderi routerr
+
+
 15.Kom fillu me krijimin e endpoints te cilat pi kontrolloj a po funksionojn pastaj po vazhdoj te tjetra.Keto pi boj me radh si tek detyra qysh jane te listuara Health endpoints,CRUDE(GET,POST,PATCH,DELETE),Loan operators,Hardendpoint-filtered,sorted,paginated book search si dhe reports.

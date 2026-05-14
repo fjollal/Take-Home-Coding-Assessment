@@ -1,27 +1,8 @@
 from fastapi import FastAPI
-import psycopg
-from psycopg.rows import dict_row
-import time
+from .routers import members, books, authors, categories, books_authors, loans
 
 app = FastAPI()
 
-
-while True:
-    try:
-        conn = psycopg.connect(
-            dbname="book_library",
-            user="postgres",
-            password="FrozenLu1827.",
-            host="localhost",
-            row_factory=dict_row
-        )
-        cursor = conn.cursor()
-        print("Connected to the database successfully!")
-        break
-    except Exception as error:
-        print("Database connection failed")
-        print("Error details:", error)
-        time.sleep(5)
 
 
 @app.get("/")
@@ -35,15 +16,16 @@ def health_check():
         "library": "open"
     }
 
+app.include_router(members.router)
+app.include_router(authors.router)
+app.include_router(categories.router)
+app.include_router(books.router)
+app.include_router(loans.router)
+app.include_router(books_authors.router)
 
-@app.get("/members")
-def get_members():
-    try:
-        cursor.execute("SELECT * FROM public.\"Members\";")
-        
-        members = cursor.fetchall()
-        
-        return {"status": "success", "data": members}
-    
-    except Exception as error:
-        return {"status": "error", "message": str(error)}
+
+
+
+
+
+
