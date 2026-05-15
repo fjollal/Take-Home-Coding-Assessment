@@ -51,6 +51,7 @@ def create_member(id:int,full_name: str, email: str, join_date: date, is_active:
             '''
             INSERT INTO public."Members"(id,full_name,email,join_date,is_active)
             VALUES (%s, %s, %s, %s, %s)
+            RETURNING *
             ''',
             (id, full_name, email, join_date, is_active)
         )

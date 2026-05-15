@@ -51,6 +51,7 @@ def create_category(name:str,categories_id:int):
             '''
             INSERT INTO public."Categories"(name,categories_id)
             VALUES (%s, %s)
+            RETURNING *
             ''',
             (name,categories_id)
         )

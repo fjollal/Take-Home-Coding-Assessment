@@ -3,3 +3,5 @@ uvicorn
 psycopg[binary]
 alembic
 sqlalchemy
+pytest
+httpx

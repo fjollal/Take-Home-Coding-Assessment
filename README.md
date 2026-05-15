@@ -33,23 +33,41 @@ Instalimi dhe konfigurimi:
 
 
 Routers endpoints:
+<br>
 http://localhost:8000/docs
-1.members.py CRUD(GET,POST,PUT,DELETE)
-2.authors.py CRUD(GET,POST,PUT,DELETE)
-3.categories.py CRUD(GET,POST,PUT,DELETE)  
-4.books.py CRUD(GET,POST,PUT,DELETE)
-5.loans.py CRUD(GET,POST,PUT,DELETE)
-6.books_py.py CRUD(GET,POST,PUT,DELETE)
+<br>
+1.members.py CRUD(GET,POST,PUT,DELETE),
+<br>
+2.authors.py CRUD(GET,POST,PUT,DELETE),
+<br>
+3.categories.py CRUD(GET,POST,PUT,DELETE),
+<br>
+4.books.py CRUD(GET,POST,PUT,DELETE),
+<br>
+5.loans.py CRUD(GET,POST,PUT,DELETE),
+<br>
+6.books_py.py CRUD(GET,POST,PUT,DELETE),
+<br>
 7.reports.py me kqyr se cili member ka ma shume loans(limit 5)
 
 Repository structure:
-ReadMe.md ==>> Ne pika tshkurta projekti
-Reasoning ==> Ne pika te gjata projekti
-requirements.txt ==> Teknologjitë e Përdorura
-main.py ==> API routers
-models.py ==>> tabelat SQLAlchemy
-schemas.py ==> Pydantic schmas(BaseModel)
-database.py ==>> lidhja me Postgre SQL
-alembic ==>> historiku i databazes
+<br>
+ReadMe.md ==>> Ne pika tshkurta projekti,
+<br>
+Reasoning ==> Ne pika te gjata projekti,
+<br>
+requirements.txt ==> Teknologjitë e Përdorura,
+<br>
+main.py ==> API routers,
+<br>
+models.py ==>> tabelat SQLAlchemy,
+<br>
+schemas.py ==> Pydantic schmas(BaseModel),
+<br>
+database.py ==>> lidhja me Postgre SQL,
+<br>
+alembic ==>> historiku i databazes,
+<br>
 tests ==>>pytest
 
+Tek pytest ==>>  python -m pytest -v

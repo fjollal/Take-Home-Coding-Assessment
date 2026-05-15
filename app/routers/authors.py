@@ -44,14 +44,15 @@ def get_author(authors_id:int):
     }
 
 @router.post("", status_code=status.HTTP_201_CREATED)
-def create_author(full_name:str,country:str,author_id:int):
+def create_author(full_name:str,country:str,authors_id:int):
     try:
         cursor.execute(
             '''
-            INSERT INTO public."Authors"(full_name,country,author_id)
+            INSERT INTO public."Authors"(full_name,country,authors_id)
             VALUES (%s, %s, %s)
+            RETURNING *
             ''',
-            (full_name,country,author_id)
+            (full_name,country,authors_id)
         )
         conn.commit()
         new_author = cursor.fetchone()
@@ -66,8 +67,8 @@ def create_author(full_name:str,country:str,author_id:int):
         raise HTTPException(status_code=400, detail=str(error))
 
     
-@router.patch("/{author_id}")
-def update_author(author_id: int, full_name: str = None, country: str = None):
+@router.patch("/{authors_id}")
+def update_author(authors_id: int, full_name: str = None, country: str = None):
 
     try:
         fields = []
@@ -87,12 +88,12 @@ def update_author(author_id: int, full_name: str = None, country: str = None):
                 "message": "No fields provided for update"
             }
 
-        values.append(author_id)
+        values.append(authors_id)
 
         query = f"""
             UPDATE public."Authors"
             SET {", ".join(fields)}
-            WHERE author_id = %s
+            WHERE authors_id = %s
             RETURNING *
         """
 
@@ -115,13 +116,13 @@ def update_author(author_id: int, full_name: str = None, country: str = None):
     
 
 @router.delete("/{id}")
-def delete_author(author_id:int):
+def delete_author(authors_id:int):
     try:
         cursor.execute(
             '''
-            DELETE FROM public."Authors" WHERE author_id=%s
+            DELETE FROM public."Authors" WHERE authors_id=%s
             ''',
-            (author_id,)
+            (authors_id,)
         )
         conn.commit()
 
