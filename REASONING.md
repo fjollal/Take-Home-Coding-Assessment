@@ -42,3 +42,13 @@ Hapat qe i kom ndjek gjate zgjedhjes se detyres:
 
 21.Why DELETE on a member with active loans returns 409
 Sepse nuk duhet me fshi nje member i cili ka met akoma pa e kthy librin
+
+22.Menyra qysh kom shku me realizimin e enpoints i kom kry CRUD operators tek te gjithe files pastaj ne vazhdim i kom shtu endpoints te tjere te cilat kane qene required dhe po ashtu njekohesisht kom bo disa korigjime ne endpoints paraprak
+
+23.Ne perfundim tek endpoints e kom kriju tek routers edhe nje file te ri per reports qe na ka kthy member qe ka pas me se shumti loans.
+
+24.Si hap te fundit per perfundimin e detyres eshte testimi(pytest) tek folderi tests qe e kom kriju ne fillim dhe tash pi shtoj files te nevojshem per testim
+
+25.Pas pergaditjes se file ne terminal e kom instalu pytest po ashtu edhe httpx e cila perdoret per me dergu http requests gjate pytest testimit ne FastAPI
+
+26.Pas instalimit te httpx behet from fastapi.testclient import TestClient

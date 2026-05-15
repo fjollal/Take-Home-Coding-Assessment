@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import members, books, authors, categories, books_authors, loans
+from .routers import members, books, authors, categories, books_authors, loans, reports
 
 app = FastAPI()
 
@@ -22,6 +22,7 @@ app.include_router(categories.router)
 app.include_router(books.router)
 app.include_router(loans.router)
 app.include_router(books_authors.router)
+app.include_router(reports.router)
 
 
 

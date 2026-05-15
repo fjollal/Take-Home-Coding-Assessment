@@ -53,3 +53,5 @@ class LoanCreate(BaseModel):
     member_id: int
     book_id: int
     due_date: date
+
+

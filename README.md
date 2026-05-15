@@ -28,16 +28,19 @@ Instalimi dhe konfigurimi:
 3.pip install "psycopg[binary]"
 4.pip install alembic
 5.uvicorn app.main:app --reload (kjo e nis serverin)
+6.pip install pytest
+7.pip install httpx
 
 
 Routers endpoints:
 http://localhost:8000/docs
-1.Members.py CRUD(GET,POST,PUT,DELETE)
-2.Authors.py CRUD(GET,POST,PUT,DELETE)
-3.Categories.py CRUD(GET,POST,PUT,DELETE)  
-4.Books.py CRUD(GET,POST,PUT,DELETE)
-5.Loans.py CRUD(GET,POST,PUT,DELETE)
-6.Books_py.py CRUD(GET,POST,PUT,DELETE)
+1.members.py CRUD(GET,POST,PUT,DELETE)
+2.authors.py CRUD(GET,POST,PUT,DELETE)
+3.categories.py CRUD(GET,POST,PUT,DELETE)  
+4.books.py CRUD(GET,POST,PUT,DELETE)
+5.loans.py CRUD(GET,POST,PUT,DELETE)
+6.books_py.py CRUD(GET,POST,PUT,DELETE)
+7.reports.py me kqyr se cili member ka ma shume loans(limit 5)
 
 Repository structure:
 ReadMe.md ==>> Ne pika tshkurta projekti
